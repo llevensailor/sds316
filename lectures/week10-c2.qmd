@@ -1,0 +1,66 @@
+---
+title: "Creating a Website on Github"
+subtitle: "How to publish your own website!"
+description: "A few tips on how to create, customize, and publish a website using Github!"
+author: "Leah Levensailor"
+topics:
+- "Github"
+- "Web Building"
+categories: ["lab", "github"]
+format:
+  revealjs:
+    theme: [dracula, lab.scss]       
+    slide-number: true   # Displays slide numbers in the corner
+    transition: slide    # Clean slide transitions
+    controls: false       # Displays navigation controls on screen
+    highlight-style: dracula  # Matches syntax highlighting to the slide theme
+    code-line-numbers: true   # Adds line numbers to code blocks
+    code-copy: true           # Adds a 1-click "Copy" button for students
+    code-overflow: wrap       # Prevents long code lines from clipping off-screen
+    preview-links: auto       # OPENS LINKS IN AN IN-SLIDE POPUP OVERLAY!
+    scrollable: true          # Allows vertical scrolling if code output is tall
+---
+
+## Today's Plan
+
+- Walk through steps for creating a website
+
+- Updating and maintaining
+
+## By the end, you should know:
+
+- How to make your own website for a portfolio, event, or just for fun!
+- How to create a custome domain
+
+## Using a template or starting from scratch
+
+- Either way is perfectly fine, its users preference.
+- **Utilize public github repos!!!!**
+- Search on github for a template you like, clone repo!
+
+## What is Github Pages?
+
+- Staic site hosting service
+- Takes HTML, CSS, and JS files right from a repo, builds, and publishes a website
+- You can host your own domain or use the standard github.io/user domain
+
+## Necesssary Files
+
+- index.qmd
+  - Default homepage, primary entry point
+- _quarto.yml
+  - Config file, themes, layouts, visuals
+
+## Setting up Pages
+
+![](images/pages.png){width=400} 
+
+Build and deployment, deploy from branch 
+chose main and /docs folder! 
+
+## Custom domain
+- If you choose, you can go to any domain site and pay cents for a domain, namecheap
+- Type in the settings, DNS check to see if it is a real domain 
+
+## Live demo
+- My websites!
