@@ -5,12 +5,346 @@ author:
 date: 2026-09-01
 description: "Demo project"
 categories: [Punishment, NAME-OF-RESEARCH-GROUP]  
-image: "images/thumbnail.webp"       
+image: "images/thumbnail.webp" 
+bibliography: bibliography.bib      
 ---
 
-## Project Overview
+## Introduction
 
-The project overview goes here - about 3 - 5 sentences about the project.
+*This is a 100-200 word introduction to the material of the project.* Ths project explores the connection, if any, between a person's race and the method or manner of their execution by the US government.
+
+There are a lot of public accounts of capital punishment. These have helped fuel the movement against state executions. There are a lot of first-person accounts of this work, including from the perspective of the executioner [@cabana1998], of attorneys [@stevenson2015]. A few more sentences here that summarizes how this topic is being talked about in your sources. Consider this paragraph a sort of lit review.
+
+::: callout-important
+## This box describes the high-level takeaway from this data exploration.  Write your summary result in 1-2 (no more!) sentences
+:::
+
+## About the Data
+
+The dataset spans 1608 - 2002. This means the median year is 1826. A few more sentences about the size and shape, and provenance (aka source) of the data.
+
+## The Process
+
+*Here I'm going to go step by step through the thinking that I did to get to my result*. *You ought to include as many of these as is applicable to your project. You can (and should) reuse some of the work from Stage 2 - that's why you did it!*
+
+### Data Cleaning & Preprocessing
+
+Write how you handled missing values, outliers, categories, binning, cleaning. Literally any transformation that you did to the data in the process of doing this work.
+
+### Exploratory Data Analysis
+
+*Add 3 to 5 visualizations (e.g., correlation heatmaps, distribution plots, or scatter plots) that directly informed you analysis.*
+
+An analysis of gender showed a dataset containing mostly men.
+
+#### Gender
+
+```{python}
+#| echo: false
+#| fig-cap: "Proportion of Executions by Gender"
+
+import pandas as pd
+from pyprojroot import here # this helps us navigate tricky path stuff between local runs and quarto builds
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
+# Load the data using here() with the path from the project root
+file_path = here("projects/demo/_data/ICPSR_08451/DS0001/08451-0001-Data.tsv")
+df = pd.read_csv(file_path, sep='\t')  # Remember!! use '\t' for tab-separated (which this data is)
 
+# how many people executed were women? (where V19 = 2)
+count_v19 = len(df[df['V19'] == '2']) # NOTE - this column is a varchar, so you need to put quotes around your integer. 
+
+# total rows in dataset
+total_rows = len(df)
+
+# lil percent count
+gender_breakdown = count_v19 / total_rows * 100
+count_other = total_rows - count_v19
+
+
+# print("Number of women: ", count_v19)
+# print("Total Rows ", total_rows)
+# print(f"Percentage of women: ",  gender_breakdown)
+
+
+# --- Pie Chart Code ---
+
+# Set Seaborn styling and choose a color palette
+sns.set_theme(style="whitegrid")
+colors = sns.color_palette("pastel")[0:2] # Using the first two colors of the pastel palette
+
+# Define data for the pie chart
+data = [count_v19, count_other]
+labels = ['Women', 'Men/Other']
+
+# Generate the plot
+plt.figure(figsize=(7, 7))
+plt.pie(data, labels=labels, colors=colors, autopct='%.2f%%', startangle=140, explode=[0.1, 0])
+plt.title("Gender Breakdown")
+
+# Equal aspect ratio ensures the pie is drawn as a perfect circle
+plt.axis('equal') 
+plt.show()
+
+
+```
+
+#### Race
+
+In the data's codebook, these race has been coded numerically: `0 M Do Not Know; NA 1 White 2 Black 3 Native American 4 Asian-Pacific Il 5 Hispanic 6 Other`
+
+```{python}
+#| echo: false
+#| fig-cap: "Proportion of Executions by Race"
+
+# Map the codes to labels
+race_mapping = {
+    '0': 'Do Not Know / NA',
+    '1': 'White',
+    '2': 'Black',
+    '3': 'Native American',
+    '4': 'Asian-Pacific Islander',
+    '5': 'Hispanic',
+    '6': 'Other'
+}
+
+# Map & Count race in col V5
+race_counts = df['V5'].astype(str).map(race_mapping).value_counts()
+
+# Remember!! Seaborn can style dynamically based on the number of values
+sns.set_theme(style="whitegrid")
+colors = sns.color_palette("pastel")[0:len(race_counts)]
+
+# Here's a bar chart
+plt.figure(figsize=(8, 8))
+plt.pie(
+    race_counts.values, 
+    labels=race_counts.index, 
+    colors=colors, 
+    autopct='%.1f%%', 
+    startangle=140
+)
+
+plt.axis('equal') 
+plt.show()
+
+```
+
+#### Methods of Execution
+
+```{python}
+#| echo: false
+#| fig-cap: "Top Methods of Execution"
+
+
+# Get the top methods
+methods = df['V11'].value_counts().head(10)
+
+# mapped labels
+method_mapping = {
+    '0': 'Do Not Know; NA',
+    '1': 'Hanging',
+    '2': 'Electrocution',
+    '3': 'Asphyxiation-Gas',
+    '4': 'Shot',
+    '5': 'Injection',
+    '6': 'Pressing',
+    '8': 'Break on Wheel',
+    '10': 'Burned',
+    '11': 'Hung in Chains',
+    '13': 'Bludgeoned',
+    '14': 'Gibbetted',
+    '15': 'Other',
+    '': 'Unknown'
+}
+
+# We can stack tasks.
+methods = (
+    df['V11']
+    .astype(str)
+    .str.strip()             # Trim any spaces
+    .map(method_mapping)     # Add match numbers to labels
+    .value_counts()          # Count 'em
+    .head(10)                # Grabs the top 10
+)
+
+# There's a BIG difference between the top 2 and the rest in the top 10...
+
+## This might not be the actual best kind of chart for this.
+
+# Keep the top 5, and sum the rest into "Other Methods"
+top_5 = methods.head(5)
+other_sum = methods.iloc[5:].sum()
+
+# Combine them back together
+methods = pd.concat([top_5, pd.Series({'All Other Methods': other_sum})])
+
+
+plt.figure(figsize=(8, 5))
+sns.barplot(x=methods.values, y=methods.index, hue=methods.index, palette="viridis", legend=False)
+
+# labels
+plt.title("Top Methods of Execution", fontsize=14, pad=15)
+plt.xlabel("Number of Executions")
+plt.ylabel("") 
+
+plt.show()
+```
+
+## The Results
+
+Explain your results and how you came to the conclusion that you have now. For example, you might show a heatmap...
+
+### Heatmap...
+
+```{python}
+#| echo: false
+#| fig-cap: "Method of Execution as a Percentage of Total by Race"
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# 1. Create a contingency table and normalize it by row ('index')
+# This turns raw counts into percentages within each racial group
+crosstab_percent = pd.crosstab(
+    df['V5'],   # Race Column
+    df['V11'], # Execution Method
+    normalize='index' 
+) * 100
+
+# 2. Plot the Heatmap
+plt.figure(figsize=(10, 6))
+sns.heatmap(
+    crosstab_percent, 
+    annot=True,          # Prints the exact percentage in each box
+    fmt=".1f",           # Rounds to 1 decimal place
+    cmap="Blues",        # Darker blue means a higher percentage
+    cbar_kws={'label': 'Percentage (%)'}
+)
+
+plt.title("Execution Methods by Race (Row Proportions)", pad=15)
+plt.ylabel("Race")
+plt.xlabel("Method of Execution")
+plt.xticks(rotation=45, ha='right')
+
+plt.show()
+```
+
+*NOTE*: This heatmap is fine, but hard to read. When I have an opportunity to polish it (hint, hint) this is one of the fixes I might make.
+
+```{python}
+from scipy.stats import chi2_contingency
+
+# 1. Remember...chi-Square requires raw counts, not percentages!
+raw_crosstab = pd.crosstab(df['V5'], df['V11'])
+
+# 2. Run the test
+chi2, p_value, dof, expected = chi2_contingency(raw_crosstab)
+
+print(f"Chi-Square Statistic: {chi2:.2f}")
+print(f"P-value: {p_value:.5f}")
+```
+
+The results indicate that there is a statistically significant relationship between race and method of execution. *However,* the spirit of the question could still be answered: **what, if any, stories about race does this dataset tell?**
+
+## Result 1: Compensation for Execution
+
+This is a paragraph contextualizing the information I'm about to show the reader. In this case, I might talk about the end of chattel slavery in the US, and how chattel slavery put a literal dollar value on each human being. This dataset reveals that some people were killed by the state for a crime, *and* the state compensated the human trafficker/enslaver for the "loss" of this value [@Madeo2026Nov].
+
+```{python}
+# 2. Define the columns we want to extract and what we want to rename them to
+column_mapping = {
+    'V7': 'Name',
+    'V11': 'Method of Execution',
+    'V5': 'Race',
+    'V10': 'Crime',
+    'V20': 'Compensation Case',
+    'V14': 'Year'
+}
+
+# 3. Filter for cases where V20 is '1' (stored as a string in the TSV)
+compensated_cases = df[df['V20'] == '1'].copy()
+total_compensations = len(compensated_cases)
+print(total_compensations)
+
+# 4. Filter columns and rename
+execution_table = compensated_cases[list(column_mapping.keys())].rename(columns=column_mapping)
+
+# 5. Display the total count and the first 10 rows
+print(f"Total compensated cases found: {len(execution_table)}")
+print("-" * 50)
+print(execution_table.head(10))
+
+```
+
+### Result 2: Compensation was not linked to a particular crime
+
+I'd include more text here about what this result *means*. I'd ask myself what I'm trying to have my readers undesrtand and why I'm showing these results in particular
+
+```{python}
+
+# 3. Create a dictionary to map the numeric crime codes (V10) to their text descriptions
+crime_map = {
+    '1': 'Murder',
+    '2': 'Rape',
+    '8': 'Slave Revolt',
+    '16': 'Arson',
+    '22': 'Attempted Rape',
+    '33': 'Poisoning',
+    '36': 'Unspecified Felony',
+    '40': 'Attempted Murder',
+    '43': 'Theft-Stealing',
+    ' ': 'Not Recorded / Unknown'
+}
+
+# Map the crime descriptions to a new column for ease
+compensated_cases['Crime Description'] = compensated_cases['V10'].map(crime_map)
+
+# Count the occurrences of each crime and display the results
+crime_summary = compensated_cases['Crime Description'].value_counts().reset_index()
+crime_summary.columns = ['Crime', 'Number of Compensated Cases']
+
+print(crime_summary.to_string(index=False))
+```
+
+### Result 3: 17% of executions resulted in compensation for enslavers
+
+Here's more high level text about this result that, ideally, would include a few more citations. You are likely best off not showing the python code (unless you're trying to make a point), so you can hide it with `#| echo: false`, just like I did above and below
+
+```{python}
+#| echo: false
+
+
+# Filter the dataset for ppl whose occupation is either "Slave" or "Runaway Slave"
+enslaved_df = df[df['V21'].astype(str).str.strip().isin(['610', '573'])].copy()
+
+total_enslaved = len(enslaved_df)
+
+# how many of these were compensation cases?
+compensated_cases_enslaved = len(enslaved_df[enslaved_df['V20'].astype(str).str.strip() == '1'])
+
+# Calculate the percentage
+if total_enslaved > 0:
+    percentage = (compensated_cases_enslaved / total_enslaved) * 100
+else:
+    percentage = 0
+
+# Display the results
+print(f"Total number of executions with occupation 'Slave': {total_enslaved}")
+print(f"Number of those that were compensated cases: {compensated_cases_enslaved}")
+print(f"Percentage: {percentage:.2f}%")
+
+```
+
+*Note:* At this point I'm noticing that there are a few data discrepancies that we should clear up, but I might not have time to do it in this first draft. That's okay - I could note them here
+
+### Result N: as many findings as you want to share
+
+Just make sure they're all related and that you've got both writing and visuals (not python code!) to help the reader.
+
+## How to understand these results
+
+Include more writing about how a viewer should understand the results you're showing them, and, where appropriate, include citations for your results.

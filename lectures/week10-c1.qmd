@@ -1,0 +1,73 @@
+---
+title: "A Fully Automated Police Apparatus"
+subtitle: "Digitize and Punish Ch. 3"
+description: "Lecture template for seminar days" # appears in the lecture notes round up
+author: "Julia Laney"
+topics:
+- "History of digitization"
+- "Racial criminalization"
+- "Predictive policing"
+categories: ["seminar", "template"]
+format:
+  revealjs:
+    theme: [serif, seminar.scss]       
+    slide-number: true   # Displays slide numbers in the corner
+    transition: slide    # Clean slide transitions
+    controls: false       # Displays navigation controls on screen
+---
+
+## Today's Agenda
+
+- Discussion leader: Julia
+- By Wednesday: Develop a full outline of your final project 
+
+
+<!--https://quarto.org/docs/presentations/revealjs/ -->
+
+<!-- Discussion Leader: Add your slides here -->
+
+<!-- Don't forget to PREVIEW the slide show in positron to make sure your changes look how you want them to! -->
+
+## Related Events
+
+[Coursework in N.Y.: Surviving the Police](https://www.washingtonpost.com/archive/politics/1999/03/16/coursework-in-ny-surviving-the-police/00328855-ab5f-4c3f-993c-bda4ec1b7f20/)
+
+-   Black law enforcement officers founded a group in the 1990s that spoke to Black communities on how to survive stop-and-frisk interactions during the heightened policing of the Giuliani era
+
+[Chicago Paid $2.7M for System Designed to Flag Officers With Multiple Complaints](https://news.wttw.com/2026/06/15/chicago-paid-27m-system-designed-flag-officers-multiple-complaints-records)
+
+-   This article highlights a tension Jefferson explores in this chapter about what happens when these types of systems are used on officers.
+
+
+## Main Points
+
+Historical context of police digitization
+
+-   Economic inequality increased in NYC and Chicago in the 80s and 90s: increases in unemployment and crime
+-   Responses to crime were motivated by capital losses: crime hurt businesses and lowered property values
+-   Predictive policing software amplified the disproportionate targeting of Black and Hispanic individuals; technological advances legitimized the existing patterns of racialized policing
+
+## NYC
+
+-   1994: Clinton's Violent Crime Control and Law Enforcement Act
+-   Massive use of tax dollars integrating IT with the police
+-   Giuliani-era reform: zero-tolerance policing & broken windows theory
+-   CompStat created to identify crime hotspots and governmentalize police behavior
+-   Impact zoning deployed officers to hotspots
+
+## Chicago
+
+-   Gang violence was compared to the Colombian drug war to lobby for military technology
+-   Oracle Corporation created the CLEAR (Citizen Law Enforcement Analysis and Reporting) system, a database that produced targets for patrol units
+-   Deployment Operations Center (DOC): a software that generated targets for patrol units and tried to predict future offenses
+-   CLEAR & DOC used to rationalize uneven distributions of patrol units
+
+
+## Questions
+
+-   "the city found itself confronted with the problem of populations whose hindrance on profit rates was increasing" (111). Jefferson argues that under capitalism, policing serves to protect economic interests rather than promote public safety. How do economic interests shape which behaviors/actions are criminalized and who is targeted by the police?
+-   "predictive policing identifies entire demographics and neighborhoods as criminally predisposed" (128). How might predictive policing create a self-fulfilling prophecy?
+- "an organization's turn to data analytics increases its demand for additional data" (116). Does the demand for more data ever end? How does this demand contribute to the expansion of surveillance, and will the expansion of surveillance ever end?
+
+
+<!-- Discussion Leader: End your slides -->

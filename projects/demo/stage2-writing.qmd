@@ -1,0 +1,8 @@
+---
+title: Stage 2 Writing
+author: Nikko Stevens
+execute:
+  code-fold: true
+---
+
+This file has my answers to the stage 2 questions.

@@ -1,0 +1,20 @@
+---
+title: "DEMO"
+author: 
+  - "Nikko Stevens"
+date: 2026-09-01
+description: "Demo project"
+categories: [Punishment, NAME-OF-RESEARCH-GROUP]  
+image: "images/thumbnail.webp"       
+---
+
+## Project Overview
+
+Confirm that your project overview is accurate to your project!  Make whatever edits you need to so that your ~150-200 word description here is accurate. 
+
+### Components
+Link to the files you've made!
+
+- [Research Plan](research-plan.qmd) 
+- [Exploratory Data Analysis 1](stage2.qmd) [and 2](stage2.2.qmd)
+- [Initial draft writing & reflection](stage2-writing.qmd)

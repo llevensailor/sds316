@@ -1,0 +1,46 @@
+---
+title: Research Plan
+author: Nikko Stevens
+execute:
+  code-fold: true
+---
+
+(Imagine these are filled out with things.)
+
+## Phase 1 Research Questions
+
+1. list three
+2. questions you are hoping to answer
+3. with your invesitgation
+
+## Personal Motivation
+Write about 100 words about your motivation for undertaking this topic.  Why are you _personally_ interested in this material?  You can be as personal or as general as you wish here, but this section is about YOUR interest in the material
+
+## Broader Relevance
+Write about 100 words discussing why you think the answers to these questions might matter to others. Is this an understudied topic?  Have the conclusions you've been seeing about it been wrong or missing something? This is your answer to the "so what?" question
+
+## Example Projects
+
+Link to three example projects that are related to your questions or how you'd like to display your results.  List them like so:
+
+**[Link to Project](http://www.example.com):** 2-3 sentences about the similarities you see or the inspriation you're taking.
+
+**[Link to Project](http://www.example.com):** 2-3 sentences about the similarities you see or the inspriation you're taking.
+
+**[Link to Project](http://www.example.com):** 2-3 sentences about the similarities you see or the inspriation you're taking.
+
+## Relevant Literature
+
+Build a **ten** item literature review for work related to your questions. 
+
+As you consider which 10 to include, try to satisfy these criteria:
+
+- 1 - 2 written by someone on the inside or system impacted
+- 3ish non-academic sources
+- at least 5 academic sources
+- no more than 2 items that we've discussed in class / from the syllabus
+
+No need to include a full citation.  Instead, list them:
+
+**[Title of Book/Article/Movie](http://linktoplaceotread.com):** 2-3  sentences about the connection between this work and your research questions.  Do not guess at these - do enough research on each item to have definite ways that the material is connected to your research
+

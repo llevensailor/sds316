@@ -225,7 +225,7 @@ By 11:59pm EST on **Wednesday October 21**, you will need to have an open PR tha
 
 ### Stage 3 - Building and Deploying
 
-**Due Monday, November 23**
+**Due Monday, November 23 (we will have an in-class work day)**
 
 During the third stage of the project, we're practicing:
 
@@ -235,13 +235,43 @@ During the third stage of the project, we're practicing:
 
 -   Telling stories with data / questioning what data may be telling us
 
-#### Key Deliverables
+#### Submission
 
-*More details about these deliverables and what you'll turn in will appear closer to the due date!*
+**Your PR should contain:**
 
--   final-first-draft report
+-   any changes necessary to make sure your folder is named descriptively and you have ONLY ONE FOLDER containing all of your work
 
--   draft abstract
+-   an updated `index.qmd` file that is your final report (see `demo/index.qmd` for an example
+
+-   a `bibliography.bib` file that you are using to store *and cite* your references
+
+-   a `project.qmd` file that contains information about the project and links to your other files
+
+### Stage 3.5 - Presentations
+
+***(we will pick speaking dates for this in class on Monday 11/23)***
+
+*Your group will all present together*. A member of your group will give a 2-4 minute overview of how the projects are connected, and what themes you all see connecting your projects. Then, each member will give a 5-7 minute presentation about their project. After everyone presents, the class will have an opportunity to ask questions.
+
+Your grade will be determined by:
+
+-   10% - Length (5-7 minutes)
+
+-   10% - Appropriate use of visuals (slides, etc) where appropriate
+
+-   30% - Appropriate use of evidence
+
+-   30% - Clear Narrative (that is – are you giving the viewer a clear story to understand)
+
+-   20% - Attendance at and participation in presentation feedback
+
+[Note]{.underline}: If you miss the presentation date for your group, you will need to get added to a different group and that group will need to integrate you into their presentation.
+
+#### Presentation Feedback
+
+When you are not presenting, you will be responsible for attending others presentations and offering engaged and thoughtful feedback (note this is 20% of your own grade).
+
+On presentation days you will be given a feedback sheet to fill out for each presentation. Presenters will use this to improve their projects before the final submission.
 
 ### Stage 4 - Reflection + Refinement
 
@@ -259,6 +289,8 @@ During the final stage of the project, we're practicing:
 
 -   final report
 
+-   presentation to the class
+
 -   Updated `g.cluster-name.qmd` file to list all of the projects from the group.
 
 -   self-reflection (private)
@@ -272,6 +304,8 @@ In order for your work to be complete and accepted,
 -   you will do all of your work in a descriptively and appropriately named branch that includes your name. For example, if I were going to make a branch to add to the week's discussion slides, I might name it `stevens-w2-slides.` A branch for my first project deliverable might be called `nikko-project-deliverable`. I'm not setting hard-and-fast rules about what you should call the branch, only that you keep in mind that there are many people making many branches and there has to be a way to identify what a branch is for based ONLY on the name of it.
 
 -   you will open a pull request (PR) with *just* the changes you're trying to merge in \<💡[how to open a PR](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)\>
+
+    -   NOTE: if you are seeing OLD commits on new branches from your main fork, come talk to me!!
 
 -   that PR will build successfully
 

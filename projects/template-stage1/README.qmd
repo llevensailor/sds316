@@ -1,0 +1,43 @@
+---
+title: README.md
+author: Nikko Stevens
+execute:
+  code-fold: true
+---
+
+This document is the README.md for the Demo project.  My readme is designed to make sure that you are ready to run your own projects and can navigate your way through the demo.
+
+
+## Running python code in a .qmd document. 
+Open this in Positron and try to hit the Run Cell button.  What happens?
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Sample data
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Create a plot
+plt.figure(figsize=(8, 6))
+plt.plot(x, y, label='sin(x)')
+plt.title('Sine Wave')
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+
+## Getting Your Environment Ready
+1. Set up a virtual environment. Make sure that your Positron terminal is set to the same directory that your project is in (this should be true by default). Then, in your terminal, run `python3 -m venv venv` 
+
+2. Then, source the virtual environment with `source venv/bin/activate`
+
+3. Install any libraries you're trying to use.  In our case, above `pip install matplotlib numpy jupyter`
+
+4. Run the cell above again - what happens now?
+
+5. Then, preview this! In your terminal run `quarto preview` and then visit http://localhost:7521/projects/demo/getting-started.html *Note, you might need to change the port number (the :7521) based on your local machine*
+
