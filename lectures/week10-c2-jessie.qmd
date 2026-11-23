@@ -1,0 +1,123 @@
+---
+title: "How to Viz for Dummies (jk ily yall)"
+subtitle: "Elements of a Good Visualization"
+description: "What exactly makes a visualization good + examples"
+author: "Jessie Wang"
+topics:
+- "Positron"
+- "Data Visualizations"
+categories: ["lab", "data viz"]
+format:
+  revealjs:
+    theme: [dracula, lab.scss]       
+    slide-number: true   # Displays slide numbers in the corner
+    transition: slide    # Clean slide transitions
+    controls: false       # Displays navigation controls on screen
+    highlight-style: dracula  # Matches syntax highlighting to the slide theme
+    code-line-numbers: true   # Adds line numbers to code blocks
+    code-copy: true           # Adds a 1-click "Copy" button for students
+    code-overflow: wrap       # Prevents long code lines from clipping off-screen
+    preview-links: auto       # OPENS LINKS IN AN IN-SLIDE POPUP OVERLAY!
+    scrollable: true          # Allows vertical scrolling if code output is tall
+---
+
+-   Tech Talk! (Jessie!)
+
+    -   What makes a good plot
+    -   Examples
+    -   What to do instead
+
+## Elements of a Good Viz
+
+1. READABILITY!
+2. Labled Axes
+3. Conveys your message
+4. Units
+5. Legend (if applicable)
+
+## Good v. Bad: Examples
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from pyprojroot import here # this helps us navigate tricky path stuff between local runs and quarto builds
+
+# Load the data using here() with the path from the project root
+file_path = here("lectures/data-week10-jessie/diabetes_dataset.csv") # demographics dataset
+diabetes = pd.read_csv(file_path, sep=',')
+
+```
+
+```{python}
+
+#group = diabetes.groupby("smoking_status")
+plt.figure()
+#for name, gr in group:
+plt.scatter(diabetes['diet_score'], diabetes['diabetes_risk_score'])
+plt.xlabel('diet score')
+plt.ylabel('risk score')
+plt.title('diet score vs risk score')
+plt.savefig('diet-v-risk.png', dpi = 300, bbox_inches = 'tight')
+plt.show()
+```
+
+## if we try to add color...
+
+```{python}
+group = diabetes.groupby("smoking_status")
+plt.figure()
+for name, gr in group:
+    plt.scatter(gr['diet_score'], gr['diabetes_risk_score'])
+plt.xlabel('diet score')
+plt.ylabel('risk score')
+plt.legend()
+plt.title('diet score vs risk score by smoking status')
+
+
+plt.show()
+```
+
+## Instead:
+
+- we can select a random sample of the data to model instead
+- `data = data.sample(n = 1000, random_state = 10)`
+
+```{python}
+data = diabetes.sample(n = 1000, random_state = 10)
+group = data.groupby("smoking_status")
+plt.figure()
+for name, gr in group:
+    plt.scatter(gr['diet_score'], gr['diabetes_risk_score'], label=name)
+plt.xlabel('diet score')
+plt.ylabel('risk score')
+plt.legend()
+plt.title('diet score vs risk score by smoking status')
+
+plt.show()
+```
+
+
+## Now with colors:
+```{python}
+data = diabetes.sample(n = 1000, random_state = 10)
+colors = {"Never": "tab:cyan", "Current": "tab:pink", "Former": "green"}
+color_list = [colors[group] for group in data['smoking_status']]
+
+plt.figure()
+plt.scatter(data['diet_score'], data['diabetes_risk_score'], label=name, c = color_list)
+plt.xlabel('diet score')
+plt.ylabel('risk score')
+plt.legend()
+plt.title('diet score vs risk score by smoking status')
+
+plt.show()
+```
+
+## Clutter
+
+- open photos
+
+
+## Sources!
+[link](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833#s9)

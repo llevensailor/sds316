@@ -80,7 +80,7 @@ gov_breakdown = count_gov / total_rows * 100
 
 print("Number of Federal Prisons: ", count_gov)
 print("Total Rows ", total_rows)
-print(f"Percentage of prisons: ",  gov_breakdown)
+print("Percentage of prisons: ",  gov_breakdown)
 ```
 
 Number of Federal Prisons: 973
@@ -136,7 +136,7 @@ pub_breakdown = count_pub / total_rows * 100
 print("Number of Public Prisons: ", count_pub)
 print("Number of Private Prisons: ", total_rows - count_pub)
 print("Total Rows ", total_rows)
-print(f"Percentage of prisons: ",  pub_breakdown)
+print("Percentage of prisons: ",  pub_breakdown)
 ```
 
 Number of Public Prisons:  973

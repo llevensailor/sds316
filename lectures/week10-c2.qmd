@@ -2,7 +2,7 @@
 title: "Creating a Website on Github"
 subtitle: "How to publish your own website!"
 description: "A few tips on how to create, customize, and publish a website using Github!"
-author: "Leah Levensailor"
+author: "Leah Levensailor & Nikko"
 topics:
 - "Github"
 - "Web Building"
@@ -22,10 +22,45 @@ format:
 ---
 
 ## Today's Plan
-
-- Walk through steps for creating a website
-
+- Reading for next week - VOTE
+- Communciating Data
+- Bibliographies/citing work
+- **(tech)** Walk through steps for creating a website
 - Updating and maintaining
+
+## What do you want to read next?
+
+## Creating an Outline
+- [Prison Policy Initiative's Guide to Writing about the Criminal Legal System (and other complex topics)](https://www.prisonpolicy.org/trainings/writing_guide.html) 
+
+## Biliography
+
+- Zotero w/ Biblatex plugin
+- Biblatex
+- BibIt
+
+## Biblatex
+```
+@article{ovienmhada,
+  title = {Resisting {{Detached Datafication}}: {{What Toxic Prisons Teach Us}} about the {{Imperative}} of {{Restorative}}/{{Transformative Data Science}} for {{Environmental}} and {{Social Justice}}},
+  author = {Ovienmhada, Ufuoma},
+  langid = {english},
+  file = {/Users/nstevens/Dropbox/zotero/files/Ovienmhada - Resisting Detached Datafication What Toxic Prisons Teach Us about the Imperative of RestorativeTra.pdf}
+}
+
+```
+## Where to get biblatex?
+1. Zotero (demo)
+2. Browser extension (demo)
+3. Google Scholar (demo)
+4. DO NOT HAND WRITE IT
+
+## Where to PUT biblatex
+- in your `bibliography.bib` file
+- in the same folder as your project
+
+
+
 
 ## By the end, you should know:
 

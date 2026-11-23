@@ -4,7 +4,7 @@ author:
   - "Jessie Wang"
 date: 2026-09-01
 description: "Stage 1"
-categories: [Investigation, Capture, Trial, Detention, Supervision, Release, Re-entry ]  #  These are some of the categories you might use
+categories: [Geography, Prisons, State and Federal, Location, Demographics, Racial Demographics]  #  These are some of the categories you might use
 image: "images/geography.png"  # Required thumbnail for grid view - CHANGE THIS (this file does not exist )
 ---
 
@@ -13,3 +13,12 @@ image: "images/geography.png"  # Required thumbnail for grid view - CHANGE THIS 
 Write about 100 - 150 words describing your project. This description will change over the semester, so each time you make a deliverable, you might need to update it.  Each time, do your best to be accurate to the focus of the project _as it is that that moment_
 
 9/27: Right now, my project is focusing on the location of prisons, the demographics of the areas around them, and what the reasoning is behind placing a prison there. We are in the researching phase, so a thesis has not been made yet. However, I have several hypotheses, which have guided my research. Perhaps prisons are built to exploit black and Brown people and their labor—racism is the underlying cause of a lot of issues in the U.S. Or perhaps the cause is increased incarceration, which follow policies that our politicians introduce. I am also interested to see if prisons are clustered together, or if they are spread apart and in rural areas. I still need to find a dataset for the locations of prisons, and once I do, I can gather more information and formulate a thesis.
+
+
+### Components
+Link to the files you've made!
+
+- [Research Plan](research-plan.qmd) 
+- [Exploratory Data Analysis 1](stage2.qmd)
+- [Exploratory Data Analysis 2](stage2.2.qmd)
+- [Initial draft writing & reflection](stage2-writing.qmd)

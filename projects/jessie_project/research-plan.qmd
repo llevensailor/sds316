@@ -9,7 +9,7 @@ execute:
 
 1. Where are prisons located?
 2. What are the demographics of each location?
-3. What went into the decision to build the prisons?
+
 
 ## Personal Motivation
 I've never really thought about where prisons were built, or what they looked like. I want to know about what went into the decisions to build a prison there: was it  the local government who decided it? What did the local population think? Does it have anything to do with the proximity to "criminals"? I hope to answer these questions this semester.

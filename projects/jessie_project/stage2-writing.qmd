@@ -1,0 +1,29 @@
+---
+title: Stage 2 Writing
+author: Jessie
+execute:
+  code-fold: true
+---
+
+In this file, reflect on what you've learned (overall across all 8 or more questions you've asked and answered) and how you'd like to complete the project.
+
+Answer at least **5** of the following questions:
+
+1.  What data did you think you'd find that you weren't able to find?
+
+2.  What most surprised you about the data you've been working with?
+- im surprised that Florida has the most federal prisons. It's not surprising that Texas and Florida have the most prisons, but Florida having more federal prisons over texas is unexpected.
+
+3.  What questions do you still have? What would help you answer them?
+- what the hispanic/latino population is like in those areas since they usually have to put white on the census...
+
+4.  What story are you trying to tell with this data?
+- if local demographics are related to prison location!
+
+5.  How do you think the insights you're discovering will be best presented? That is, what kinds of displays might be most effective for the story you're trying to tell?
+- i will definitely need a map, and I have the geometry columns already! I just have to look for tutorials about how to make maps in python.
+
+6.  How has your thinking changed since you first wrote your research question?
+- i have to take out the one about what legislators say about the decision, as there are probably no data sets about that and would require me to find the posts themselves, if there even is any.
+
+7.  How do you think you'll be able to connect your project to others in your research cluster?
