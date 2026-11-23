@@ -4,18 +4,253 @@ author:
   - "Leah Levensailor"
 date: 2026-09-14
 description: "Semester Project"
-categories: [Investigation, Supervision ]  
+categories: [Investigation, Supervision, Government Involvement ]  
 image: "images/flock_stock.png"  
+bibliography: bibliography.bib
+echo: false
 ---
 
-## Project Overview
+## Introduction
 
-I have chosen to focus my project on the use of Flock cameras in Immigration and Customs Enforcement (ICE) detainment. Flock cameras are are an AI powered national surveilance system. There were very little safeguards initially, with police departments having almost unlimited access to a nationwide database of every person and vehicle recorded. Following some backlash, Flock has instilled some more protections but not enough to make the general public feel safe. In the last two years, Flock cameras have sprung up all over the country. Initially they were advertised as a tool to find stolen cars and missing children. My research will focus on how the Flock system has been abused to find and detain people ICE suspects to be illegal immigrants. Flock has stated they do not have a partnership with ICE however the placement of concentration of cameras tells a different story. I will be exploring the top five states with the msot Flock cameras, but ultimately focusing my attention to California which has the largest number of Flock cameras, as well as the largest number of recorded immigrants. 
+This project explores the use of Flock cameras in Immigration and Customs Enforcement (ICE) detainment in California, in addition to the relationship between states immigration population and density of Flock cameras. I am hypothesizing that there is a significant relationship between Flock cameras and state's immigrant share of its population. Flock cameras are are an AI powered national surveillance system. In the last two years, Flock cameras have sprung up all over the country. My research focuses on how the Flock system has been abused to find and detain people ICE suspects to be illegal immigrants. Reports of increased ICE detainment at The Home Depot and Lowe's in Southern California lead my research. Rep. Judy Chu and other California representatives wrote a letter to Home Depot and Lowe's asking for data and clarification on why there has been an influx of ICE activity at their locations. This came up after a man died from being hit by a car while running from ICE agents at a Home Depot @chu2026. Lowe's and Home Depot are the two top private businesses with Flock cameras on their property. Flock is being criticized for their involvement in ICE detainment, while they are publicly stating there is no relationship with ICE. 
 
 
-### Components
+## About the Data
 
-- [Research Plan](research-plan.qmd) 
-- [Exploratory Data Analysis: Part 1](stage2.1.qmd)
-- [Exploratory Data Analysis: Part 2](stage2.2.qmd)
-- [Initial draft writing & reflection](stage2-writing.qmd)
+For this project, I had to use multiple different sources of data to analyze the connections. @finding-flock2026 provided three datasets, the amount of Flock cameras per state, private companies with contracts with Flock, and the amount of Flock cameras per city in the United States. These datasets are updated every six hours on their website but I have the most up to date version from November 2026. @openstreetmap2024 provided the geocodes for all of the reported Flock cameras in California as of November 2026. All of these datasets rely on the public to report the location of cameras. Two datasets show the immigration distribution, @migration-policy-institute provides the total immigrant share of the population per state from the years 1990, 2000, 2010, 2019, and 2024. However for this project I have only focused on the 2024 share. @nih2026 provided the share of immigrant population for all of the counties in California specifically. 
+
+
+## The Process
+
+
+
+### Data Cleaning & Preprocessing
+
+```{python}
+#| echo: False
+import pandas as pd
+from pyprojroot import here 
+import matplotlib.pyplot as plt
+import seaborn as s
+
+# Loading all of the datasets I will need 
+file_path_state = here("projects/leah/_data/flockperstate.csv")
+per_state_df = pd.read_csv(file_path_state, sep=',')  
+
+file_path_private = here("projects/leah/_data/private-operators.csv")
+df_priv = pd.read_csv(file_path_private, sep=',')  
+
+file_path_cities = here("projects/leah/_data/findingflock-cameras-by-city.csv")
+df_cities = pd.read_csv(file_path_cities, sep=',') 
+
+file_path_election = here("projects/leah/_data/Presidential-Election-Results-by-US-County-2024.csv")
+df_election = pd.read_csv(file_path_election, sep=',')  
+
+file_path_immigration = here("projects/leah/_data/mpi-data-hub_immigrants_n-percent-us-population-by-state-2024.csv")
+df_immigration = pd.read_csv(file_path_immigration, sep=',')  
+```
+
+All of the datasets I used were loaded as CSV files. For all of the datasets, the numeric columns were loaded as char columns. I had to change the column types for all of the columns that had numeric values in order to perform analysis and calculations. I did this by using pandas `to_numeric()` function. I also had to take out the commas and percent signs because numeric columns cannot have characters in them. I used `str.replace()` to take out the commas and `str[:-1]` to delete the percent sign that was at the end of each number in the MPI dataset. I knew I was only going to be focusing on the 2024 share of immigrants from the MPI dataset so I created a subset dataframe that only included the the data from 2024, I also took out the first row since that observation represented the entire United States and could interfere with my analysis of each of the states. In order to perform an analysis of the immigration and flock datasets, I created an outer merged dataframe by the `"State"` column. When creating the maps, I also had to merge the dataframe with the geometry of the maps and the data used to analyze. In my scatterplot of immigrant share of population and flock camera amount, I had to turn the Flock camera scale into the log scale in order to get rid of the cluster and make the scales more digestible. 
+```{python}
+# DATA CLEANING
+# accidentally had 6000 extra empty lines from the excel file that I downloaded whoops!
+df_immigration = df_immigration.drop(df_immigration.index[52:6225])
+# data cleaning from the previous qmd 
+per_state_df["Flock Cameras"] = pd.to_numeric(per_state_df["Flock Cameras"].str.replace(",", ""))
+df_priv["Cameras"] = pd.to_numeric(df_priv["Cameras"].str.replace(",", ""))
+df_immigration = df_immigration.drop(df_immigration.index[52:6225])
+
+#making a subset of the original dataset with just the share and the state and taking out the united states as a whole
+sorted_immigration = df_immigration[["State", "Immigrant Share of Total State Population24"]]
+sorted_immigration = sorted_immigration.iloc[1:]
+# taking out the percent sign and making them floats so they can be compared as numbers 
+sorted_immigration["Immigrant Share of Total State Population24"] = sorted_immigration['Immigrant Share of Total State Population24'].str[:-1].astype(float)
+#sorting in ascending order 
+rank_immigration = sorted_immigration.sort_values(by="Immigrant Share of Total State Population24")
+
+
+
+# when I first ran the merge alabama and alaska did not merge because of a trailing space at the end of the two values so I have to get 
+# rid of that first!
+per_state_df["State"] = per_state_df["State"].str.strip()
+# merging the ranked and per state dfs so I can create a graph 
+merged_df = pd.merge(rank_immigration, per_state_df, on="State", how="outer")
+
+```
+
+
+### Exploratory Data Analysis
+
+
+#### Location of Cameras 
+An analysis of where Flock cameras can be found showed they are located mostly in California and Texas, while the private operators are majority Lowe's and The Home Depot. 
+```{python}
+# bar chart of top states 
+# sort the states in to descending order based on the flock camera number  
+sorted_states = per_state_df.sort_values(by=["Flock Cameras"], ascending=False)
+print(sorted_states.head(5))
+state_bar = s.barplot(data = sorted_states.head(5), x = "State", y = "Flock Cameras")
+state_bar.set_title("States With Highest Number of Flock Cameras Installed")
+```
+
+I sorted the dataset in descending order of number of cameras and found the top three operators using `head(3)`
+```{python}
+#bar chart of top 3 operators 
+sort_operator = df_priv.sort_values(by=["Cameras"], ascending=False)
+# The color is the home depot orange hex code 
+op_bar = s.barplot(data = sort_operator.head(3), x = "Operator", y = "Cameras", color = "#F96302" )
+op_bar.set_title("Top Three Private Company Customers of Flock")
+```
+
+Lowe's and Home Depot are known spots for immigrant workers to try and find work for the day. This led me to explore the relationship between states with large immigrant populations and the most flock cameras. 
+
+The top five states in order are California, Texas, Florida, Georgia, and Illinois. I then wanted to find out what each of these states immigrant population looked like.
+
+#### Immigration Population
+
+First looking at the entire US, this regression plot shows the positive relationship between the amount of Flock cameras in a state and that states immigrate population share. 
+
+
+```{python}
+import seaborn as sns 
+import numpy as np
+# regression plot 
+#log of y bc the scale was to different 
+reg = sns.regplot(data = merged_df, x = "Immigrant Share of Total State Population24", y = np.log1p(merged_df["Flock Cameras"]))
+
+reg.set(ylabel = "Flock Cameras Count (Log Scale)", xlabel = "Immigrant Share of Total Population (Percentage)")
+
+reg.set_title("Flock Camera Total vs. Immigrant Share of Population per State", fontsize = 16)
+
+```
+
+I then found the average share of total population per state in the United States. 
+```{python}
+# Average immigration share scatterplot 
+#i have to make the column numeric and take away the percent
+avg_immigration = sorted_immigration['Immigrant Share of Total State Population24'].mean()
+ 
+# now I can find the average of the 50 states plus DC
+print("Average Immigrant Share of Population Per State:",avg_immigration)
+
+```
+
+Now we can see the immigrant share for each of the states with the most Flock cameras:
+
+```{python}
+
+top_states = sorted_immigration.loc[sorted_immigration['State'].isin(['California','Texas', 'Florida', 'Georgia', 'Illinois' ])]
+print("Immigrant Share of Total Population")
+#finding the value in the df and printing it neater 
+num = top_states.loc[top_states['State'] == "California", "Immigrant Share of Total State Population24"].iloc[0]
+print("California:", num, "%")
+
+num = top_states.loc[top_states['State'] == "Texas", "Immigrant Share of Total State Population24"].iloc[0]
+print("Texas:", num, "%")
+
+num = top_states.loc[top_states['State'] == "Florida", "Immigrant Share of Total State Population24"].iloc[0]
+print("Florida:", num, "%")
+
+num = top_states.loc[top_states['State'] == "Georgia", "Immigrant Share of Total State Population24"].iloc[0]
+print("Georgia:", num, "%")
+
+num = top_states.loc[top_states['State'] == "Illinois", "Immigrant Share of Total State Population24"].iloc[0]
+print("Illinois:", num, "%")
+```
+
+California has a much larger share than the rest, just to be sure I want to check what state has the largest share by sorting the dataframe in descending order and only looking at the first observation. 
+
+```{python}
+above_av = sorted_immigration[sorted_immigration["Immigrant Share of Total State Population24"] > avg_immigration]
+
+top = above_av.sort_values(by = ["Immigrant Share of Total State Population24"], ascending = False).head(1)
+
+print("The state with the largest immigrant population is:", top.iloc[0,0])
+```
+
+Now that we have confirmed that California has the most cameras and the largest share of immigrants, this contributes to my hypothesis that there is a relationship between flock cameras and immigrant populations. In my results I will take a closer look at California.
+
+
+## The Results
+
+### California
+
+This map shows the share of immigrants per county in California. 
+```{python}
+import geopandas as gpd
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+# Downloading the shape file and data files 
+path_county = here("projects/leah/_data/California-Shape/California_County_Boundaries_and_Identifiers.shp")
+county_map = gpd.read_file(path_county)
+path_count_imm = here("projects/leah/_data/county-imm-share.csv")
+county_immigrants = pd.read_csv(path_count_imm)
+
+# Merging the two files into one dataframe to create my map
+merged_map_data = county_map.merge(county_immigrants, left_on="CDTFA_COUN", right_on= "County", how="left")
+
+
+cali = merged_map_data.plot(column = "Percent",
+          legend = True,
+          cmap = "plasma")
+cali.set_axis_off()
+cali.set_title("Immigrant Percent of Population Per County: California")
+
+```
+
+While this map shows the locations of all of the reported Flock Cameras in California as of November 2026. 
+```{python}
+import json
+import geopandas as gpd
+import pandas as pd
+import matplotlib.pyplot as plt
+# downloading camera location files 
+path_flock = here("projects/leah/_data/export.geojson")
+flock_map_data = gpd.read_file(path_flock)
+
+
+county_map = gpd.read_file(path_county)
+
+# making the county boundaries show 
+ax = county_map.plot(facecolor="none", edgecolor= "black")
+flock_map_data = flock_map_data.set_crs("EPSG:4326").to_crs(county_map.crs)
+flock_map = flock_map_data.plot(ax=ax, markersize= 3)
+flock_map.set_axis_off()
+flock_map.set_title("Flock Camera Locations in California")
+flock_map
+
+```
+
+
+### Map Analysis 
+
+Both of the maps have a high concentration around the same places, the central western portion called the Bay Area, and the south western part where Los Angeles is located. It is important to note that these two areas are the hot spots on both of the maps, showing that in places were immigrants hold a higher percentage of the population, we can also find there is larger amounts of Flock Cameras. In the northern most part of the state there is a very small percentage of immigrants, and virtually no cameras in comparison to the southern parts. Looking at counties that has the darkest shade of purple in the south eastern boarder, this in Inyo County. At the time of collection, there was one reported camera in the entire county. This rains true for most of the other counties that show a small percentage of immigrants. Los Angeles and Orange Counties in the south west coast have a higher share of immigrants than the counties around them, keeping with the trend they hold the majority of the Flock cameras in the south. 
+
+### Statistical Model 
+
+Following the map analysis of California, I wanted to see if this pattern stayed throughout the entire country. The scatterplot above showed the positive semi-linear relationship between the amount of Flock cameras a state has and what percentage of the states population are immigrants. I had to transform the y axis to the log scale in order to clean the graph so when making the linear regression model I also took the log scale of the y axis. This way the model represents the graph instead of the raw data. 
+
+```{python}
+#linear regression model 
+import numpy as np
+import statsmodels.api as sm
+
+x = merged_df["Immigrant Share of Total State Population24"]
+y = np.log1p(merged_df["Flock Cameras"])
+
+
+model = sm.OLS(y,x)
+
+results = model.fit()
+print(results.summary())
+```
+
+As shown above, the P-value is less than 0.000. With an alpha value of 0.05, I have now shown that the P-value is less than our alpha of 0.05 meaning that there is a statistically significant relationship between the number of Flock cameras in a state and that states immigration population share. My hypothesis is correct, with the maps and statistical model both showing there is a relationship. 
+
+## How to understand these results
+
+Understanding there is a relationship is the first step in stopping this type of surveillance. This project shows that Flock cameras are being used for political agendas, at this moment its immigration but what is to stop the next administration from targeting something else. This project is not the first to look into these cases. Legislation in California is asking for answers on why people are being targeted at certain stores and why ICE seems to have a hand in Flock camera placement. ICE has recently started "Operation Safe California" which is a 45 day raid to try and detain as many people as possible @cair_2026. 
+
+Flock has made statements about ICE saying there is no direct access for ICE agents, however they cannot stop a person with access from letting ICE conduct searches @ipvideomarket_2026. They are playing the card of since they do not directly put the information into ICE's hands it is not their fault. The CEO of the company going as far as to say they "can't make it their problem as a company" @ipvideomarket_2026. The truth is Flock benefits from ICE using their system, as we can tell there is an incredibly high amount of cameras being placed in locations immigrants are prone to be. For Flock, this means more cameras being installed, more people using the system, more money in Flock's pockets. California is just one example of the people in charge using whatever means necessary to get what they want. We do not know what the next agenda will be, this type of surveillance has to be put in check before it gets worse. 

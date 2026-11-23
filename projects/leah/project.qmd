@@ -1,0 +1,21 @@
+---
+title: "Flock Camera Usage for ICE Detainment"
+author: 
+  - "Leah Levensailor"
+date: 2026-09-14
+description: "Semester Project"
+categories: [Investigation, Supervision ]  
+image: "images/flock_stock.png"  
+---
+
+## Project Overview
+
+I have chosen to focus my project on the use of Flock cameras in Immigration and Customs Enforcement (ICE) detainment. Flock cameras are are an AI powered national surveillance system. There were very little safeguards initially, with police departments having almost unlimited access to a nationwide database of every person and vehicle recorded. Following some backlash, Flock has instilled some more protections but not enough to make the general public feel safe. In the last two years, Flock cameras have sprung up all over the country. Initially they were advertised as a tool to find stolen cars and missing children. My research will focus on how the Flock system has been abused to find and detain people ICE suspects to be illegal immigrants. Flock has stated they do not have a partnership with ICE however the placement of concentration of cameras tells a different story. I will be exploring the top five states with the most Flock cameras, but ultimately focusing my attention to California which has the largest number of Flock cameras, as well as the largest number of recorded immigrants. 
+
+
+### Components
+
+- [Research Plan](research-plan.qmd) 
+- [Exploratory Data Analysis: Part 1](stage2.1.qmd)
+- [Exploratory Data Analysis: Part 2](stage2.2.qmd)
+- [Initial draft writing & reflection](stage2-writing.qmd)

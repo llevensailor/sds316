@@ -16,7 +16,7 @@ execute:
 ## Personal Motivation
 
 I am against police officers being able to abuse their power without checks and balances. I believe that we should not live in a surveillance 
-state where people’s everyday lives are constantly monitored. I also think it is interesting that places like Home Depot and Lowes are one of 
+state where people’s everyday lives are constantly monitored. I also think it is interesting that places like Home Depot and Lowe's are one of 
 the largest supporters of these cameras specifically because of the frequent practice of immigrants looking for work in those parking lots. I 
 do not think it is a coincidence that these are the places that are being surveyed. There has to be a larger agenda behind these cameras and I 
 want to figure out what it is. 
@@ -24,7 +24,7 @@ want to figure out what it is.
 
 ## Broader Relevance
 
-These answers will matter to others because there is a large outrage about Flock cameras with missions such as ‘deflock’ popping up to show people how to break them. There is a large group of people that believe that these cameras are not right and the system is being abused. The reason it is important to do this research is we are in new territory. Flock camera usage skyrocketed in the last year and we have to understand why. There has also been an intense spike in ICE detainment in the last year, with these officers needing to use some sort of servailance to be able to find the people they are looking for. 
+These answers will matter to others because there is a large outrage about Flock cameras with missions such as ‘deflock’ popping up to show people how to break them. There is a large group of people that believe that these cameras are not right and the system is being abused. The reason it is important to do this research is we are in new territory. Flock camera usage skyrocketed in the last year and we have to understand why. There has also been an intense spike in ICE detainment in the last year, with these officers needing to use some sort of surveillance to be able to find the people they are looking for. 
 
 
 
@@ -34,9 +34,9 @@ Link to three example projects that are related to your questions or how you'd l
 
 **[Link to Deflock](https://maps.deflock.org/?lat=39.8283&lng=-98.5795&zoom=4.00):** Deflock developed an interactive map to show people where the concentration of cameras are. People from all over the world can upload a new location. I am taking inspiration from the need to keep everyone aware and protect those that Flock can harm. 
 
-**[Link to ACLU](https://www.aclu.org/news/privacy-technology/tracking-alpr-cameras/how-to-fight-deployment-of-flock-and-other-mass-surveillance-license-plate-readers-in-your-community):** The ACLU created a how to guide on how to get rid of Flock in your local community, educating people on which governments are accelling in dismantelling Flock and why it needs to be shut down. These examples give me great examples of how agencies are refusing Flock and what they are specifically doing. 
+**[Link to ACLU](https://www.aclu.org/news/privacy-technology/tracking-alpr-cameras/how-to-fight-deployment-of-flock-and-other-mass-surveillance-license-plate-readers-in-your-community):** The ACLU created a how to guide on how to get rid of Flock in your local community, educating people on which governments are excelling in dismantling Flock and why it needs to be shut down. These examples give me great examples of how agencies are refusing Flock and what they are specifically doing. 
 
-**[Link to Marshall Project](https://www.themarshallproject.org/records/19746-flock):** The Marshall Project created a landing place for everything Flock related so people can stay up to date on what is happening wihtout having to find it from a bunch of different sources. This inspires me because it is another example of making sure the public is aware of what is going on and how we can stop it. 
+**[Link to Marshall Project](https://www.themarshallproject.org/records/19746-flock):** The Marshall Project created a landing place for everything Flock related so people can stay up to date on what is happening without having to find it from a bunch of different sources. This inspires me because it is another example of making sure the public is aware of what is going on and how we can stop it. 
 
 ## Relevant Literature
 
@@ -46,22 +46,27 @@ vehicle theft is decreased since the implementation. They made in clear in multi
 
 **[Flock announces security changes after dozens of reports of law enforcement abuse and public backlash](https://abcnews.com/GMA/News/flock-announces-security-amid-data-privacy-concerns/story?id=135619397):** ABC did a story on how Flock is changing its polices in response to the backlash. This relates to my question on who is making the safeguards and what are they? 
 
-**[Amid intense backlash, people are vandalizing Flock surveillance cameras](https://www.npr.org/2026/08/21/nx-s1-5931849/amid-intense-backlash-people-are-vandalizing-flock-surveillance-cameras):** NPR explored how people are responding to Flock camera usage and the surge of vandilism. The podcast will help show how people feel about the constant surveilance and the lack of democracy in deploying these systems. 
+**[Amid intense backlash, people are vandalizing Flock surveillance cameras](https://www.npr.org/2026/08/21/nx-s1-5931849/amid-intense-backlash-people-are-vandalizing-flock-surveillance-cameras):** NPR explored how people are responding to Flock camera usage and the surge of vandalism. The podcast will help show how people feel about the constant surveillance and the lack of democracy in deploying these systems. 
 
 **[What are ALPRs?](https://deflock.org/what-is-an-alpr):** Deflock is a organization that sprung up to educate people on what Flock is doing and destroy the cameras. They have a FAQ page as well as a page explaining what the camera does on a daily basis. This is the main movement against Flock so I will be using a lot of their data and articles within my paper. 
 
-**[What is Flock?](https://www.flocksafety.com/what-is-flock):** This is the offical Flock website with their mission statement and purpose. This will show me how Flock views itself and the work it is doing. I need to know what the stated intention of the cameras are in order to argue they are not following that intention. 
+**[What is Flock?](https://www.flocksafety.com/what-is-flock):** This is the official Flock website with their mission statement and purpose. This will show me how Flock views itself and the work it is doing. I need to know what the stated intention of the cameras are in order to argue they are not following that intention. 
 
-**[Law Enforcement Agencies and the Use of AI Technology](https://shsu-ir.tdl.org/items/a4142f82-504e-4363-8096-11d980979540):** This article from Sam Houston State University is explaining why the police should be using AI technologies and all of the benefits from it. I do not necessarily agree with this statement, however I want to read all sides of the arguement on Flock cameras in order to write a well rounded paper. 
+**[Law Enforcement Agencies and the Use of AI Technology](https://shsu-ir.tdl.org/items/a4142f82-504e-4363-8096-11d980979540):** This article from Sam Houston State University is explaining why the police should be using AI technologies and all of the benefits from it. I do not necessarily agree with this statement, however I want to read all sides of the argument on Flock cameras in order to write a well rounded paper. 
 
-**[From Deep Learning to Real-World Surveillance: A Case Study of Flock Safety's Automated License Plate Recognition Network](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7240498):** This article explains the use of federal immigration control without the conscent or knowledge of the local governments where the cameras are located. I will use this article when explaining why Lowes and Home Depot are the top locations for these cameras and explain the bigger purpose of these cameras. 
+**[From Deep Learning to Real-World Surveillance: A Case Study of Flock Safety's Automated License Plate Recognition Network](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7240498):** This article explains the use of federal immigration control without the consent or knowledge of the local governments where the cameras are located. I will use this article when explaining why Lowe's and Home Depot are the top locations for these cameras and explain the bigger purpose of these cameras. 
 
 **[Fast-Growing Company Flock](https://flockoutofathens.com/documents/aclu_flock_memo.pdf):** This article by the ACLU explains the business model and future goals of Flock to explain that they are not simply a license plate reader camera. This article connects to my research of how Flock came to be and what it can turn into without safeguards. 
 
-**[Grounding the Flock: Confronting Police Surveillance of Mobilities](https://journals.sagepub.com/doi/full/10.1177/20501579261453519):** Monahan argues that the use of Flock is furthering discriminitory practices within the police system and advancing far right police structures. This will be helpful with connecting the political parties to Flock usage and how they react to it. 
+**[Grounding the Flock: Confronting Police Surveillance of Mobilities](https://journals.sagepub.com/doi/full/10.1177/20501579261453519):** Monahan argues that the use of Flock is furthering discriminatory practices within the police system and advancing far right police structures. This will be helpful with connecting the political parties to Flock usage and how they react to it. 
 
 **[“Democracy is happening” in the fight over Flock cameras](https://www.hks.harvard.edu/faculty-research/policy-topics/science-technology-data/democracy-happening-fight-over-flock-cameras):** Harvard Kennedy School wrote about how the people did not vote for 
 flock to exist yet they are everywhere. This article will show how people are responding to flock and how scholars are explaining the impact on public safety. The town of Groton is coming together as a town to research and decide if they are beneficial or not. 
 
 **[Immigration in California](https://www.ppic.org/publication/immigrants-in-california/):** 
 
+**[California Home Depot ICE](https://www.kqed.org/news/12101260/at-least-4-people-vanished-by-ice-agents-in-concord-home-depot-parking-lot-advocates-say):** 
+
+**[California Ice](https://apnews.com/article/immigration-raid-home-depot-california-day-labor-ac9d401f385bf557a8ecbe07808026d5):** 
+
+**[Immigration in California](https://www.nbcnews.com/news/us-news/home-depots-become-prime-locations-immigration-enforcement-rcna226643):** 
